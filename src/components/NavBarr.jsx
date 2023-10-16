@@ -1,6 +1,28 @@
-import { useState } from "react"; 
+import React from "react";
 
-function NavBarr({pokemonList, pokemonIndex, setpokemonIndex }) {
+function NavBarr({ pokemonList, pokemonIndex,setpokemonIndex }) {
+  return (
+    <div>
+      <p>Index : {pokemonIndex}</p>
+      {pokemonList.map((pokemon, index) => (
+        <button key={index} onClick={() => setpokemonIndex(index)}>
+          {pokemon.name}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+
+
+
+
+
+
+
+
+
+/*function NavBarr({pokemonList, pokemonIndex, setpokemonIndex }) {
 
 const pkmSuivant = () => {setpokemonIndex(pokemonIndex+ 1)}
 const pkmPrecedent = () => {setpokemonIndex (pokemonIndex-1 )}
@@ -17,7 +39,5 @@ return (
       </div>
 )      
 };
-
-
-
+*/
 export default NavBarr;

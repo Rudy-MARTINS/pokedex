@@ -49,5 +49,7 @@ export default App;
 
 
 
+/*
+<NavBarr pokemonList={pokemonList} pokemonIndex={pokemonIndex} setpokemonIndex={setpokemonIndex}/>*/
 
 
