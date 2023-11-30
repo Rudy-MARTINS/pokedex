@@ -1,35 +1,32 @@
-const pokemonList = [
-    {
-      name: "bulbasaur",
-      imgSrc:
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
-    },
-    {
-      name: "mew",
-    },
-  ];
+import PropTypes from "prop-types";
 
-function PokemonCard() {
-
-    const pokemon = pokemonList[0];
-
-    if (pokemon.imgSrc != null) {
-    return <figure>
-    <img src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"/>
-            <figcaption>"bulbasaur"</figcaption>
-           </figure>        
-    }
-  
-    else {
-        return (<div><p>???</p><figcaption>"Mew"</figcaption></div>)  
-  };
-    
-return (
-      <figure>
-       <img src= "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" alt="bulbasaur" />;
-       <figcaption>"bulbasaur"</figcaption>
-      </figure>
-      );
+function PokemonCard({ pokemon }) {
+  console.log(pokemon);
+  return (
+    <div>
+      {pokemon.map((poke) => (
+        <figure key={poke.name}>
+          <img src={poke.imgSrc} alt={poke.name} />
+          <figcaption>{poke.name}</figcaption>
+        </figure>
+      ))}
+    </div>
+  );
 }
-  
-  export default PokemonCard;
+PokemonCard.propTypes = {
+  pokemon: PropTypes.oneOfType([
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      imgSrc: PropTypes.string,
+    }),
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        imgSrc: PropTypes.string,
+      })
+    ),
+  ]).isRequired,
+};
+
+
+export default PokemonCard;
