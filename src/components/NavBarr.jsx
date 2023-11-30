@@ -1,11 +1,18 @@
-import React from "react";
+function NavBarr({ pokemonList, pokemonIndex, setpokemonIndex }) {
+  const handlePokemonSelection = (index) => {
+    setpokemonIndex(index);
+    const selectedPokemon = pokemonList[index];
 
-function NavBarr({ pokemonList, pokemonIndex,setpokemonIndex }) {
+    if (selectedPokemon.name === 'pikachu') {
+      alert('pika pikachu !!!');
+    }
+  };
+
   return (
     <div>
       <p>Index : {pokemonIndex}</p>
       {pokemonList.map((pokemon, index) => (
-        <button key={index} onClick={() => setpokemonIndex(index)}>
+        <button key={index} onClick={() => handlePokemonSelection(index)}>
           {pokemon.name}
         </button>
       ))}
@@ -13,31 +20,4 @@ function NavBarr({ pokemonList, pokemonIndex,setpokemonIndex }) {
   );
 }
 
-
-
-
-
-
-
-
-
-
-/*function NavBarr({pokemonList, pokemonIndex, setpokemonIndex }) {
-
-const pkmSuivant = () => {setpokemonIndex(pokemonIndex+ 1)}
-const pkmPrecedent = () => {setpokemonIndex (pokemonIndex-1 )}
-   
-return (
-      <div>
-      <button disabled={pokemonIndex === 0}
-        onClick= {pkmPrecedent}>"précédent"</button> 
-      <button 
-        disabled={pokemonIndex >= pokemonList.length -1}
-        onClick= {pkmSuivant}>"suivant"</button>
-      
-      <p>index :{pokemonIndex}</p>
-      </div>
-)      
-};
-*/
 export default NavBarr;

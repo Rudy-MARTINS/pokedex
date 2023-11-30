@@ -11,7 +11,7 @@ function PokemonCard({pokemon}) {
     
       else {
           return (<div><p>???</p></div>)  
-    };
+    }
     
   
 }
